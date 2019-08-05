@@ -1,82 +1,86 @@
 <html>
-    
+
        <script>
         function convertSelection(selection){
             if(selection=="rock")
-                return 0
+                return 0;
             else if(selection=="scissor")
-                return 1
+                return 1;
             else 
-                return 2
+                return 2;
         }
         function computerPlay(options){
             
-            return options[Math.floor((Math.random() * options.length) + 1)-1]
+            return options[Math.floor((Math.random() * options.length) + 1)-1];
         }
         function playRound(playerSelection, computerSelection) 
         {
-            const endings = [[0,1,-1],[-1,0,1],[1,-1,0]]
-            playernum = convertSelection(playerSelection)
-            compnum = convertSelection(computerSelection)
-            result = endings[playernum][compnum]
-            return result
+            const endings = [[0,1,-1],[-1,0,1],[1,-1,0]];
+            playernum = convertSelection(playerSelection);
+            compnum = convertSelection(computerSelection);
+            result = endings[playernum][compnum];
+            return result;
         }
         function reportResult(score,computerSelection,playerSelection)
         {
             if(score==1)
-                return "You win! "+playerSelection+" beats "+computerSelection
+                return "You win! "+playerSelection+" beats "+computerSelection;
             else if(score==0)
-                return "It's a tie! Both selected "+computerSelection
+                return "It's a tie! Both selected "+computerSelection;
             else
-                return "You lose! "+computerSelection+" beats "+playerSelection
+                return "You lose! "+computerSelection+" beats "+playerSelection;
         }
         function getPlayerSelection(options, round){
-            let playerSelection = ""
+            let playerSelection = "";
             while (playerSelection == "")
                 {
-                    playerSelection = window.prompt("Round "+round+". Please select an option (rock, scissor or paper)", "Rock")
-                    playerSelection = playerSelection.toLocaleLowerCase()
+                    playerSelection = window.prompt("Round "+round+". Please select an option (rock, scissor or paper)", "Rock");
+                    playerSelection = playerSelection.toLocaleLowerCase();
                     if (options.includes(playerSelection)==false)
                     {
-                        window.alert("Selection invalid. Try again.")
-                        playerSelection = ""
+                        window.alert("Selection invalid. Try again.");
+                        playerSelection = "";
                     }
                 }
-            return playerSelection
+            return playerSelection;
         }
         function game()
         {
-            const options = ["rock","scissor","paper"]
-            let playerscore = 0
-            let computerscore = 0
-            let winner = ""
-            let playerSelection = ""
-            let computerSelection = ""
+            const options = ["rock","scissor","paper"];
+            let playerscore = 0;
+            let computerscore = 0;
+            let winner = "";
+            let playerSelection = "";
+            let computerSelection = "";
 
-            console.log("Welcome to the Rock Paper Scissor game.")
+            console.log("Welcome to the Rock Paper Scissor game.");
             for(let i=0;i<5;i++)
             {
-                playerSelection= getPlayerSelection(options, i+1)
-                computerSelection = computerPlay(options)
-                console.log("For round "+(i+1)+" you selected: "+playerSelection)
-                console.log("For round "+(i+1)+" the computer selected: "+computerSelection)
-                result = playRound(playerSelection, computerSelection)
+                playerSelection= getPlayerSelection(options, i+1);
+                computerSelection = computerPlay(options);
+                console.log("For round "+(i+1)+" you selected: "+playerSelection);
+                console.log("For round "+(i+1)+" the computer selected: "+computerSelection);
+                result = playRound(playerSelection, computerSelection);
                 if(result==1)
-                    playerscore++
+                    playerscore++;
                 else if(result == -1)
-                    computerscore++
-                console.log(reportResult(result, computerSelection,playerSelection))
+                    computerscore++;
+                else{
+                    playerscore++;
+                    computerscore++;
+                }
+                console.log(reportResult(result, computerSelection,playerSelection));
             }
             if (playerscore>computerscore)
-                winner = "You!"
+                winner = "You!";
             else if (computerscore>playerscore)
-                winner = "The computer!"
+                winner = "The computer!";
             else
-                winner = "None! It's a tie!"
-            console.log("Ding ding ding! The winner is: " + winner)
-            console.log("Final score: ")
-            console.log("You: "+playerscore + " - Computer: "+computerscore)
+                winner = "None! It's a tie!";
+            console.log("Ding ding ding! The winner is: " + winner);
+            console.log("Final score: ");
+            console.log("You: "+playerscore + " - Computer: "+computerscore);
         }
-        game()
+        game();
         </script>
 </html>
