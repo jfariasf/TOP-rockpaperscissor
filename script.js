@@ -7,7 +7,8 @@
         let round_results = document.querySelector("#round_results");
         let roundText = document.querySelector("#round_text");
         let winnerText=document.querySelector("#winner_text");
-
+        let playerScoreText =document.querySelector("#player_score");
+        let computerScoreText = document.querySelector("#computer_score");
 
         buttons.forEach(function(button) {
         button.addEventListener("click", (e) => {
@@ -22,6 +23,8 @@
             winnerText.textContent = "";
             roundText.textContent = "Round #0";
             resetButton.style.display = "none";
+            playerScoreText.textContent = 0;
+            computerScoreText.textContent = 0;
         });
 
         function convertSelection(selection){
@@ -80,8 +83,6 @@
             let playerSelectionText = document.querySelector("#player_selection");
             let computerSelectionText = document.querySelector("#computer_selection");
 
-            let playerScoreText =document.querySelector("#player_score");
-            let computerScoreText = document.querySelector("#computer_score");
 
             if (rounds < 5)
             {
