@@ -4,7 +4,6 @@
         let computerscore = 0;
         let buttons = document.querySelectorAll("button.player_choice");
         let resetButton = document.querySelector("button.reset");
-
         let round_results = document.querySelector("#round_results");
         let roundText = document.querySelector("#round_text");
         let winnerText=document.querySelector("#winner_text");
@@ -23,8 +22,6 @@
             winnerText.textContent = "";
             roundText.textContent = "Round #0";
             resetButton.style.display = "none";
-
-
         });
 
         function convertSelection(selection){
@@ -49,7 +46,6 @@
         }
         function reportResult(score,computerSelection,playerSelection)
         {
-
             if(score==1)
                 return "You win this round! "+playerSelection+" beats "+computerSelection;
             else if(score==0)
@@ -89,14 +85,9 @@
 
             if (rounds < 5)
             {
-              
                 roundText.textContent="Round #"+(rounds+1).toString();
-
                 playerSelection = playerSelection.toLocaleLowerCase();
                 computerSelection = computerPlay(options);
-
-
-
                 result = playRound(playerSelection, computerSelection);
                 if(result==1)
                     playerscore++;
