@@ -23,13 +23,8 @@
             winnerText.textContent = "";
             roundText.textContent = "Round #0";
             resetButton.style.display = "none";
-<<<<<<< HEAD
             playerScoreText.textContent = "0";
             computerScoreText.textContent = "0";
-=======
-            playerScoreText.textContent = 0;
-            computerScoreText.textContent = 0;
->>>>>>> f31bc299b9c56ff6694954d50da2e66bc1e86858
         });
 
         function convertSelection(selection){
